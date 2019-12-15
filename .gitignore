@@ -1,0 +1,17 @@
+# python
+*.pyc
+__pycache__/
+
+# flask
+gen/
+.webassets-cache/
+
+# editor
+*.swp
+
+# log
+*.log
+nohup.out
+
+# other
+local_config.py
