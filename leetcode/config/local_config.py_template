@@ -1,0 +1,8 @@
+is_debug = False
+
+flask_host = ""
+flask_port = ""
+
+log_file_level = None
+log_console_level = None
+

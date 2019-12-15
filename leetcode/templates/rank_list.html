@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Leetcode - Ranklist</title>
+{% include "common/head.html" %}
+</head>
+<body>
+    <table border="1">
+    <tr>
+        <th>rank</th>
+        <th>name</th>
+        <th>nick name</th>
+        <th>rating</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.ranking }}</td>
+        <td><a href='/u/{{ user.user_name }}/'>{{ user.user_name }}</a></td>
+        <td>{{ user.real_name }}</td>
+        <td>{{ user.rating }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <table>
+    <tr>
+        <th>
+            <a href='/ranklist/1/'> &lt;&lt; </a>
+        </th>
+        <th>
+            {% if page > 1 %}
+            <a href='/ranklist/{{ page - 1 }}/'> &lt; </a>
+            {% else %}
+             &lt; 
+            {% endif %}
+        </th>
+        <th>
+            {{ page }}
+        </th>
+        <th>
+            {% if page < max_page %}
+            <a href='/ranklist/{{ page + 1 }}/'> &gt; </a>
+            {% else %}
+             &gt; 
+            {% endif %}
+        </th>
+        <th>
+            <a href='/ranklist/{{ max_page }}/'> &gt;&gt; </a>
+        </th>
+    </tr>
+    </table>
+</body>
+</html>
