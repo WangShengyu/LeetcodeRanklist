@@ -1,5 +1,5 @@
 h1 {
-    font-size: 64px;
+    font-size: 48px;
     text-align: center;
 }
 a, a:visited, a:link {
@@ -18,7 +18,7 @@ a, a:visited, a:link {
     font-size: 32px;
 }
 #rank_list_table tr:nth-child(n+2){
-    height: 50px;
+    height: 40px;
 }
 #rank_list_table tr:nth-child(2n+3){
     background: #eee;
