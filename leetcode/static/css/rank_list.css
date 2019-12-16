@@ -1,0 +1,28 @@
+h1 {
+    font-size: 64px;
+    text-align: center;
+}
+a, a:visited, a:link {
+    color: #00d;
+}
+#rank_list_table {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid black;
+}
+#nav_table {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 32px;
+}
+#rank_list_table tr:nth-child(n+2){
+    height: 50px;
+}
+#rank_list_table tr:nth-child(2n+3){
+    background: #eee;
+}
+#rank_list_table tr:nth-child(2n+2){
+    background: #ddd;
+}

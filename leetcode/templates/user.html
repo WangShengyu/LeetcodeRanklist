@@ -2,24 +2,31 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Leetcode - User {{ user_name }}</title>
+<title>Leetcode - {{ user.user_name }}</title>
 {% include "common/head.html" %}
+<link rel="stylesheet" type="text/css" href="/static/css/user.css" />
 </head>
 <body>
-    Name: {{ user.user_name }}</br>
-    Nick Name: {{ user.real_name }}</br>
-    Ranking: {{ user.local_ranking }}</br>
-    <table border="1">
+    <h1>{{ user.real_name }}</h1> Local Ranking: {{ user.local_ranking }}</br>
+    <h2>{{ user.user_name }}</h2>
+    * 参加过第1、2场双周赛或更早比赛的老用户数据可能会有些问题
+    <table>
     <tr>
         <th>Contest</th>
-        <th>Ranking</th>
+        <th>Global Ranking</th>
         <th>Rating</th>
     </tr>
-    {% for i in range(user.rating|length) %}
+    {% for i in range(user.rating|length)[::-1] %}
     <tr>
         <td>{{ user.contest_name[i] }}</td>
         <td>{{ user.ranking[i] }}</td>
-        <td>{{ user.rating[i] }}</td>
+        {% if i > 0 and user.rating[i] > user.rating[i - 1] %}
+        <td class="rating_inc">{{ user.rating[i] }}</td>
+        {% elif i > 0 and user.rating[i] < user.rating[i - 1]   %}
+        <td class="rating_dec">{{ user.rating[i] }}</td>
+        {% else %}
+        <td class="rating_stab">{{ user.rating[i] }}</td>
+        {% endif %}
     </tr>
     {% endfor %}
     </table>

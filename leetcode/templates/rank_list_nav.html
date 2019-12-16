@@ -1,0 +1,49 @@
+<table id="nav_table">
+<tr>
+    <th>
+        {% if page > 1 %}
+        <a href='/ranklist/1/'> &lt;&lt; </a>
+        {% else %}
+         &lt;&lt; 
+        {% endif %}
+    </th>
+    <th>
+        {% if page > 5 %}
+        <a href='/ranklist/{{ page - 5 }}/'> &lt;5 </a>
+        {% else %}
+         &lt;5 
+        {% endif %}
+    </th>
+    <th>
+        {% if page > 1 %}
+        <a href='/ranklist/{{ page - 1 }}/'> &lt; </a>
+        {% else %}
+         &lt; 
+        {% endif %}
+    </th>
+    <th>
+        {{ page }}
+    </th>
+    <th>
+        {% if page < max_page %}
+        <a href='/ranklist/{{ page + 1 }}/'> &gt; </a>
+        {% else %}
+         &gt; 
+        {% endif %}
+    </th>
+    <th>
+        {% if page + 5 <= max_page %}
+        <a href='/ranklist/{{ page + 5 }}/'> &gt;5 </a>
+        {% else %}
+         &gt;5 
+        {% endif %}
+    </th>
+    <th>
+        {% if page < max_page %}
+        <a href='/ranklist/{{ max_page }}/'> &gt;&gt; </a>
+        {% else %}
+         &gt;&gt; 
+        {% endif %}
+    </th>
+</tr>
+</table>

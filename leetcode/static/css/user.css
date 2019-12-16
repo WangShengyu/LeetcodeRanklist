@@ -1,0 +1,29 @@
+h1 {
+    font-size: 64px;
+    display: inline;
+}
+h2 {
+    font-size: 32px;
+}
+table {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid black;
+}
+.rating_inc {
+    color: #a00;
+}
+.rating_dec {
+    color: #0a0;
+}
+.rating_stab {
+    color: #000;
+}
+table tr:nth-child(2n+3){
+    background: #eee;
+}
+table tr:nth-child(2n+2){
+    background: #ddd;
+}

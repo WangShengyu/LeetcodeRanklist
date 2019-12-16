@@ -4,50 +4,29 @@
 <meta charset="utf-8">
 <title>Leetcode - Ranklist</title>
 {% include "common/head.html" %}
+<link rel="stylesheet" type="text/css" href="/static/css/rank_list.css" />
 </head>
 <body>
-    <table border="1">
+    <h1>Leetcode Ranklist</h1>
+    {% include "rank_list_nav.html" %}
+    <table id="rank_list_table" >
     <tr>
-        <th>rank</th>
-        <th>name</th>
-        <th>nick name</th>
-        <th>rating</th>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Nick name</th>
+        <th>Rating</th>
+        <th>Contests Count</th>
     </tr>
-    {% for user in users %}
+    {% for i in range(users|length) %}
     <tr>
-        <td>{{ user.ranking }}</td>
-        <td><a href='/u/{{ user.user_name }}/'>{{ user.user_name }}</a></td>
-        <td>{{ user.real_name }}</td>
-        <td>{{ user.rating }}</td>
+        <td>{{ users[i].ranking }}</td>
+        <td><a href='/u/{{ users[i].user_name }}/'>{{ users[i].user_name }}</a></td>
+        <td>{{ users[i].real_name }}</td>
+        <td>{{ users[i].rating }}</td>
+        <td>{{ users[i].contests_count }}</td>
     </tr>
     {% endfor %}
     </table>
-    <table>
-    <tr>
-        <th>
-            <a href='/ranklist/1/'> &lt;&lt; </a>
-        </th>
-        <th>
-            {% if page > 1 %}
-            <a href='/ranklist/{{ page - 1 }}/'> &lt; </a>
-            {% else %}
-             &lt; 
-            {% endif %}
-        </th>
-        <th>
-            {{ page }}
-        </th>
-        <th>
-            {% if page < max_page %}
-            <a href='/ranklist/{{ page + 1 }}/'> &gt; </a>
-            {% else %}
-             &gt; 
-            {% endif %}
-        </th>
-        <th>
-            <a href='/ranklist/{{ max_page }}/'> &gt;&gt; </a>
-        </th>
-    </tr>
-    </table>
+    {% include "rank_list_nav.html" %}
 </body>
 </html>
