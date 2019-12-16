@@ -56,7 +56,7 @@ def get_user_info(user_name):
 from .structs.ranklist_page import RanklistPage, RanklistUser
 def get_ranklist_page(page):
     session = HTMLSession()
-    d = {"operationName": None,"variables":{},"query":"{\n  localRanking(page: " + str(page) + ") {\n    totalUsers\n    userPerPage\n    rankingNodes {\n      currentRating\n      user {\n        username\n        profile {\n          realName\n        }\n      }\n    }\n  }\n}\n"}
+    d = {"operationName": None,"variables":{},"query":"{\n  localRanking(page: " + str(page) + ") {\n    totalUsers\n    userPerPage\n    rankingNodes {\n      currentRating\n      user {\n        profile {\n          userSlug\n          realName\n        }\n      }\n    }\n  }\n}\n"}
     r = session.post("https://leetcode-cn.com/graphql/", json=d)
     val = json.loads(r.text)
     data = val["data"]["localRanking"]
@@ -71,7 +71,7 @@ def get_ranklist_page(page):
         u = RanklistUser()
         u.ranking = start_ranking + i
         u.rating = int(user["currentRating"])
-        u.user_name = user["user"]["username"]
+        u.user_name = user["user"]["profile"]["userSlug"]
         u.real_name = user["user"]["profile"]["realName"]
         r.users.append(u)
     return r
@@ -102,8 +102,3 @@ def test_get_user_info(user_name):
 def test_contest():
     get_contests()
 
-import sys
-if __name__ == "__main__":
-    #test_get_ranklist_page(int(sys.argv[1]))
-    test_get_user_info(sys.argv[1])
-    #test_contest()
